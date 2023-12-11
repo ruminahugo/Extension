@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "Hide Specify Sites",
+    "version": "1.0",
+    "description": "Description of your extension",
+    "host_permissions": [
+        "*://*.google.com/*"
+    ],
+    "icons": {
+        "16": "icon/icon_16.png",
+        "48": "icon/icon_48.png",
+        "128": "icon/icon_128.png"
+    },
+    "permissions": [
+        "storage",
+        "webRequest",
+        "webNavigation",
+        "management",
+        "nativeMessaging"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://www.google.com/*"],
+        "js": ["content.js"]
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
+  

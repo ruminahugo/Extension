@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popup</title>
+  <meta charset="utf-8" />
+  <style>
+    body {
+        margin: 0;
+        min-width: 330px;
+        font-family: Arial, sans-serif;
+        padding: 0;
+    }
+    .title-bar {
+        background-color: #f0f0f0;
+        padding: 8px;
+        border-bottom: 1px solid #ccc;
+        font-weight: bold;
+    }
+    #main {
+        text-align: -webkit-center;
+    }
+    /* Thiết lập kiểu dáng cho toggle switch */
+    .toggle {
+        float: right;
+        position: relative;
+        /*display: inline-block;*/
+        width: 38px;
+        height: 16px;
+    }
+
+    /* Ẩn input radio mặc định */
+    .toggle input {
+    display: none;
+    }
+
+    /* Slider (thanh trượt) */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px;
+    }
+
+    /* Trạng thái khi được bật */
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 12px;
+        width: 12px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+    /* Trạng thái khi toggle bật */
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(21px);
+    }
+
+    #web_address {
+        display: block;
+        width: 250px;
+        padding: 5px;
+        border-bottom: 1px solid #000000;
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+    }
+    #web_address:focus{
+        outline: none;
+        border-color: blue;
+    }
+    .Button {
+        margin-top: 8px;
+        padding: 10px 16px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    #sub{
+        display: none;
+    }
+    #maskedImage{
+        display: flex;
+        margin: 2px;
+
+    }
+    #maskedImage > svg {
+        cursor: pointer;
+    }
+    #maskedImage > span {
+        margin: auto;
+        font-size: medium;
+        font-weight: bold;
+    }
+    ul#list {
+        text-align: left;
+        list-style: none;
+        margin-top: 2px;
+    }
+    ul#list>li {
+        display: flex;
+        align-items: center;
+    }
+    .action {
+        display: grid;
+        margin: 5px 44px;
+    }
+    .Button_1 {
+        cursor: pointer;
+        padding: 4px 9px;
+        color: #fff;
+        background-color: rgba(100, 100, 255);
+        border: none;
+        border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+    <div class="title-bar">
+        Hide Specify Sites
+        <label class="toggle">
+            <input type="checkbox" id="myCheckbox" />
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div id="main">
+        <h3>Nhập web bạn không muốn hiển thị trên Google</h3>
+        <input type="text" id="web_address" placeholder="VD: a.com, b.vn" />
+        <button id="blockButton" class="Button">Ẩn đi</button>
+        <button id="get_data" class="Button">Web đã block</button>
+    </div>
+    <div id="sub">
+        <div id="maskedImage">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#5F6368">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            </svg>
+            <span>Lịch sử đã lưu</span>
+        </div>
+        <div class="action">
+            <button class="Button_1" id="del">Xoá</button>
+        </div>
+        <ul id="list"></ul>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
